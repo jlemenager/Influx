@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Influx</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <nav>
+        <div class="nav-head">
+            <img src="" alt="logo">
+            <h2>Influx</h2>
+        </div>
+        <div class="nav-links">
+
+        </div>
+    </nav>
+    <main>
+        <input type="text" class="stock-name" placeholder="stock-name">
+        <select name="Industry" id="industry-dropdown">
+
+            <!-- Basic Materials -->
+            <option value="agriculture">Agriculture</option>
+            <option value="building-materials">Building Materials</option>
+            <option value="chemicals">Chemicals</option>
+            <option value="forest-products">Forest Products</option>
+            <option value="metals-and-mining">Metals and Mining</option>
+            <option value="steel">Steel</option>
+
+            <!-- Consumer Cyclical -->
+            <option value="vehicles-and-parts">Vehicles and Parts</option>
+            <option value="furnishings-fixtures-appliances">Furnishings, Fixtures, and Appliances</option>
+            <option value="construction">Homebuilding and Construction</option>
+            <option value="manufacturing-apparel-accessories">Manufacturing for Apparel and Accessories</option>
+            <option value="packaging-containers">Packaging and Containers</option>
+            <option value="personal-services">Personal Services</option>
+            <option value="restaurants">Restaurants</option>
+            <option value="retail">Retail (Cyclical)</option>
+            <option value="travel-leisure">Travel and Leisure</option>
+
+            <!-- Financial Services -->
+            <option value="asset-management">Asset Management</option>
+            <option value="banks">Banks</option>
+            <option value="capital-markets">Capital Markets</option>
+            <option value="insurance">Insurance</option>
+            <option value="diversified-financial-services">Diversified Financial Services</option>
+            <option value="credit-services">Credit Services</option>
+
+            <!-- Real Estate -->
+            <option value="real-estate">Real Estate</option>
+            <option value="REITs">REITs</option>
+
+            <!-- Consumer Defensive -->
+            <option value="alcoholic-beverages">Alcoholic Beverages</option>
+            <option value="nonalcoholic-beverages">Non-Alcoholic Beverages</option>
+            <option value="consumer-packaged-goods">Consumer Packaged Goods</option>
+            <option value="education">Education</option>
+            <option value="retail-defensive">Retail (Defensive)</option>
+            <option value="tobacco-products">Tobacco Products</option>
+
+            <!-- Healthcare -->
+            <option value="biotech">Biotechnology</option>
+            <option value="drug-manufacturers">Drug Manufacturers</option>
+            <option value="healthcare-plans">Healthcare Plans</option>
+            <option value="healthcare-providers">Healthcare Providers and Services</option>
+            <option value="medical-devices">Medical Devices and Instruments</option>
+            <option value="medical-distribution">Medical Distribution</option>
+
+            <!-- Utilities -->
+            <option value="utilities-independent">Utilities (Independent Power Producers)</option>
+            <option value="utilities-regulated">Utilities (Regulated)</option>
+
+            <!-- Communication Services -->
+            <option value="telecommunication-services">Telecommunication Services</option>
+            <option value="media-diversified">Media (Diversified)</option>
+            <option value="interactive-media">Interactive Media</option>
+
+            <!-- Energy -->
+            <!-- Industrials -->
+            <!-- Technology -->
+            <option value="restaurants">Restaurants</option>
+            <option value="banks-regional">Banks (Regional)</option>
+            <option value="beverage-alcoholic">Beverage (Alcoholic)</option>
+            <option value="beverage-soft">Beverage (Soft)</option>
+            <option value="broadcasting">Broadcasting</option>
+            <option value="brokerageandinvestmentbanking">Brokerage and Investment Banking</option>
+            <option value="building-materials">Building Materials</option>
+            <option value="businessandconsumerservices">Business and Consumer Services</option>
+            <option value="cable-tv">Cable TV</option>
+            <option value="computer-services">Computer Services</option>
+            <option value="construction-supplies">Construction Supplies</option>
+            <option value="drugs-biotech">Drugs (Biotech)</option>
+            <option value="drugs-pharma">Drugs (Pharmaceuticals)</option>
+            <option value="education">Education</option>
+            <option value="electrical-equipment">Electrical Equipment</option>
+            <option value="electronics-consumer">Electronics (Consumer)</option>
+            <option value="electronics-general">Electronics (General)</option>
+            <option value="construction">Construction</option>
+            <option value="engineering">Engineering</option>
+            <option value="entertainment">Entertainment</option>
+            <option value="env-and-waste-services">Environmental and Waste Services</option>
+            <option value="farming">Farming/Agriculture</option>
+            <option value="financial-services-notbankorinsurance">Financial Services (not bank or insurance)</option>
+            <option value="food-processing">Food Processing</option>
+            <option value="food-wholesale">Food (Wholesale)</option>
+            <option value="home-furnishings">Home Furnishings</option>
+            <option value="renewable energy">Green and Renewable Energy</option>
+            <option value="healthcare-products">Healthcare Products</option>
+            <option value="healthcare-services">Healthcare Support Services</option>
+            <option value="healthcare-tech">Healthcare Technology</option>
+            <option value="homebuilding">Homebuilding</option>
+            <option value="hospitals">Hospitals</option>
+            <option value="healthcare-facilities">Healthcare Facilities</option>
+            <option value="hotel">Hotel</option>
+            <option value="household-products">Household Products</option>
+            <option value="insurance-general">Insurance (General)</option>
+            <option value="insurance-life">Insurance (Life)</option>
+            <option value="investments-asset-management">Investments and Asset Management</option>
+            <option value="machinery">Machinery</option>
+            <option value="mining">Metals and Mining</option>
+            <option value="office-equipment">Office Equipment</option>
+            <option value="oil-production">Oil/Gas (Production)</option>
+            <option value="oil-distribution">Oil/Gas (Distribution)</option>
+            <option value="oil-equipment">Oilfield Services and Equipment</option>
+            <option value="packaging">Packaging and Container</option>
+            <option value="paper-products">Paper/Forest Products</option>
+            <option value="power">Power</option>
+            <option value="precious-metals">Precious Metals</option>
+            <option value="publishing">Publishing</option>
+            <option value="real-estate-development">Real Estate (Development)</option>
+            <option value="real-estate">Real Estate (General)</option>
+            <option value="real-estate-operations">Real Estate (Operations/Services)</option>
+            <option value="recreation">Recreation</option>
+            <option value="restaurant">Restaurant/Dining</option>
+            <option value="retail-automotive">Retail (Automotive)</option>
+            <option value="retail-building">Retail (Building Supply)</option>
+            <option value="retail-distributors">Retail (Distributors)</option>
+            <option value="retail-grocery">Retail (Grocery)</option>
+            <option value="retail-online">Retail (Online)</option>
+            <option value="retail">Retail (General)</option>
+            <option value="rubber-and-tires">Rubber and Tires</option>
+            <option value="semiconductor">Semiconductor</option>
+            <option value="semiconductor-equipment">Semiconductor Equipment</option>
+            <option value="shipbuilding-and-marine">Shipbuilding and Marine</option>
+            <option value="sports-shoe">Sports Shoe Company</option>
+            <option value="casual-shoe">Casual Shoe Company</option>
+            <option value="sustainable-clothing">Sustainable Clothing Company</option>
+            <option value="sustainable-shoe">Sustainable Shoe Company</option>
+            <option value="fitness-equipment">Fitness Equipment Company</option>
+            <option value="software-entertainment">Software (Entertainment)</option>
+            <option value="software-internet">Software (Internet)</option>
+            <option value="software-systemandapplication">Software (System and Application)</option>
+            <option value="steel">Steel</option>
+            <option value="telecommunication-equipment">Telecommunication (Equipment)</option>
+            <option value="telecommunication-wireless">Telecommunication (Wireless)</option>
+            <option value="telecommunication-services">Telecommunication (Services)</option>
+            <option value="transportation">Transportation</option>
+            <option value="transportation-railroads">Transportation (Railroads)</option>
+            <option value="trucking">Trucking</option>
+            <option value="utility-general">Utility (General)</option>
+            <option value="utility-water">Utility (Water)</option>
+        </select>
+        <input type="text" class="pe-ratio" placeholder="Price/Earnings Ratio">
+        <input type="text" class="pb-ratio" placeholder="Price/Book Ratio">
+        <input type="text" class="evtoebit-ratio" placeholder="Enterprise Value to EBIT Ratio">
+        <input type="text" class="eps-ratio" placeholder="Earnings/Share Ratio">
+        <input type="text" class="roe" placeholder="Return on Equity">
+        <input type="text" class="revenue-growth-5year" placeholder="Revenue Growth (5 year)">
+        <input type="text" class="dte-ratio" placeholder="Debt/Equity Ratio">
+        <input type="text" class="ic-ratio" placeholder="Interest Coverage Ratio">
+        <input type="text" class="operating-margin" placeholder="Operating Margin">
+        <input type="text" class="price-to-free-cash-flow" placeholder="Price to Free Cash Flow">
+        <input type="text" class="quick-ratio" placeholder="Quick Ratio (Acid Test)">
+
+        <button>Search</button>
+    </main>
+    <script src="index.js"></script>
+</body>
+</html>
